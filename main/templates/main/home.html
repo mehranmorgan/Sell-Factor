@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block title %}Home{% endblock %}
+    {% block css %}{% endblock %}
+{% block content %}
+    <div class="table-container">
+    <table class="table">
+  <tr>
+    <th>مشتری</th>
+    <th>تاریخ</th>
+    <th>لیست محصولات</th>
+
+
+
+  </tr>
+        {% for order in all_orders %}
+  <tr>
+    <td><a href="{% url 'order:show_item_list' order.id %}">{{ order.customer }}</a></td>
+    <td>{{ order.date }}</td>
+
+      <td><a href="{% url 'order:show_item_list' order.id %}">باقیمت</a>/<a href="{% url 'order:show_item_list_no_price' order.id %}" >بدون قیمت</a></td>
+
+  </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock %}

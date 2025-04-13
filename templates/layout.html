@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'layout/layout.css'%}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-container">
+    <nav class="nav-bar">
+        <div class="nav-bar nav-bar__item"><a href="{% url 'main:index' %}">Home</a></div>
+        <div class="nav-bar nav-bar__item"><a href="{% url 'product:show_product' %}">Product</a></div>
+        <div class="nav-bar nav-bar__item"><a href="{% url 'customer:show_customer' %}">Customer</a></div>
+        <div class="nav-bar nav-bar__item"><a href="{% url 'order:order_register' %}">Order</a></div>
+    </nav>
+    </div>
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

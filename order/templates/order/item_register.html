@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block title %}Item register{% endblock %}
+    {% block css %}{% endblock %}
+{% block content %}
+        <div class="search_product">
+        <form class="form" method="get">
+            <input type="text" name="search">
+            <button>Search</button>
+
+        </form>
+    </div>
+        <div class="table-container">
+    <table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Qty</th>
+
+  </tr>
+        {% for product in products %}
+  <tr>
+  <form method="post" action="{% url 'order:add_item' %}">
+      {% csrf_token %}
+      <input type="hidden" value="{{ order.id }}" name="order_id">
+    <td><input type="hidden" value="{{ product.id }}" name="id">{{ product.name }}</td>
+    <td><input type="number" min="1" style="width: 50px" name="qty"></td>
+    <td><button type="submit" style="width: 40px;height: 30px;background-image: none;color: black;border: none"><svg style="width: 20px;height: 20px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</button></td>
+
+</form>
+  </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock %}
