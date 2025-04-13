@@ -100,5 +100,5 @@ Sell-Factor/
 
 ---
 
-<p align="center">با ❤️ توسط <strong>Mehran Morgan</strong> توسعه داده شده</p>
+<p align="center">با ❤️ توسط <strong>Mehran Abdollahi</strong> توسعه داده شده</p>
 
