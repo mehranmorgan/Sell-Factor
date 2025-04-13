@@ -33,8 +33,8 @@
                 <td colspan="11" class="text-right">
                     <div class="row">
                         <div class="col-4">
-                            <p>نام شخص حقیق / حقوقی: ایران ژنراتور</p>
-                            <p>آدرس کامل: لاله زار جنوبی کوچه علیپور</p>
+                            <p>نام شخص حقیق / حقوقی: {{ order.seller.name }}</p>
+                            <p>آدرس کامل: {{ order.seller.address }}</p>
                         </div>
                         <div class="col-4">
                             <p>شماره اقتصادی:</p>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-4">
                             <p>شماره ثبت / شناسه ملی:</p>
-                            <p>تلفن / نمابر:_____</p>
+                            <p>تلفن / نمابر:{{ order.seller.phone }}</p>
                         </div>
                     </div>
                 </td>
@@ -126,7 +126,7 @@
                 <th colspan="6" class="text-right">توضیحات:</th>
             </tr>
             <tr style="padding: 60px 0;">
-                <td colspan="5" class="text-right">مهر و امضا فروشنده علی اکبری: </td>
+                <td colspan="5" class="text-right">مهر و امضا فروشنده :{{ order.seller.name }} </td>
                 <td colspan="6" class="text-right">مهر و امضا خریدار</td>
             </tr>
             </tbody>

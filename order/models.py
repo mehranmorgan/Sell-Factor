@@ -3,10 +3,12 @@ from django.db.models import Sum
 
 from customer.models import Customer
 from product.models import Product
+from seller.models import Seller
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    seller=models.ForeignKey(Seller,on_delete=models.CASCADE,related_name='orders')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE,related_name='orders')
     date = models.DateField(auto_now_add=True)
     @property
     def total(self):

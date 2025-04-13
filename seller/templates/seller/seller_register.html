@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block title %}Seller register{% endblock %}
+    {% block css %}{% endblock %}
+{% block content %}
+        <div>
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button class="register" type="submit">Add</button>
+    </form>
+    </div>
+{% endblock %}

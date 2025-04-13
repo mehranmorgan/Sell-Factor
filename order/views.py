@@ -2,15 +2,22 @@ from django.shortcuts import render, redirect
 from customer.models import Customer
 from order.models import Order, OrderItem
 from product.models import Product
+from seller.models import Seller
 
 
 def order_register(request):
     customers = Customer.objects.all()
-    context = {'customers': customers}
+    sellers = Seller.objects.all()
+    context = {
+        'customers': customers,
+        'sellers': sellers,
+    }
     customer_id = str(request.GET.get('customer_id'))
-    if customer_id.isdigit():
+    seller_id = str(request.GET.get('seller_id'))
+    if customer_id.isdigit() and seller_id.isdigit():
         customer = Customer.objects.get(id=customer_id)
-        new_order = Order.objects.create(customer=customer, )
+        seller = Seller.objects.get(id=seller_id)
+        new_order = Order.objects.create(customer=customer,seller=seller )
     return render(request, 'order/order_register.html', context)
 
 

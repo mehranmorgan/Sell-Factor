@@ -13,6 +13,12 @@
             <option value="{{ customer.id }}">{{ customer.name }}</option>
         {% endfor %}
         </select>
+            <select name="seller_id">
+        <option>Seller Select</option>
+        {% for seller in sellers %}
+            <option value="{{ seller.id }}">{{ seller.name }}</option>
+        {% endfor %}
+        </select>
         <button type="submit">Add New Order</button>
     </form>
 
