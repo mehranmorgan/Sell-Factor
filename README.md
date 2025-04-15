@@ -96,7 +96,7 @@ Sell-Factor/
 برای ارتباط و پیشنهاد:
 
 - GitHub: [@mehranmorgan](https://github.com/mehranmorgan)
-- ایمیل: mehranmorgan@example.com
+- ایمیل: mehran.morgan@yahoo.com
 
 ---
 
