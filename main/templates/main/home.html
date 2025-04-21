@@ -1,29 +1,37 @@
-{% extends 'layout.html' %}
+{% extends 'layout-ai.html' %}
 {% load static %}
-
+{% load humanize %}
 
 {% block title %}Home{% endblock %}
     {% block css %}{% endblock %}
 {% block content %}
-    <div class="table-container">
-    <table class="table">
-  <tr>
-    <th>مشتری</th>
-    <th>تاریخ</th>
-    <th>لیست محصولات</th>
+  <!-- Main content -->
+  <div class="container">
+    <h1>درخواست‌های فاکتور فروش</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>شماره درخواست</th>
+          <th>نام مشتری</th>
+          <th>تاریخ</th>
+          <th>وضعیت</th>
+          <th>مبلغ (تومان)</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for order in all_orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.customer }}</td>
+          <td>{{ order.date }}</td>
+          <td class="status-cancelled">لغوشده</td>
+          <td>{{ order.total | intcomma:'False'}}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
 
 
-  </tr>
-        {% for order in all_orders %}
-  <tr>
-    <td><a href="{% url 'order:show_item_list' order.id %}">{{ order.customer }}</a></td>
-    <td>{{ order.date }}</td>
-
-      <td><a href="{% url 'order:show_item_list' order.id %}">باقیمت</a>/<a href="{% url 'order:show_item_list_no_price' order.id %}" >بدون قیمت</a></td>
-
-  </tr>
-        {% endfor %}
-</table>
-</div>
 {% endblock %}
