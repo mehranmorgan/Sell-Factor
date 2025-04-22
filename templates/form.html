@@ -1,0 +1,48 @@
+<!-- Customer Info Form -->
+<div class="bg-white shadow rounded-lg p-6 mt-8">
+  <h2 class="text-lg font-semibold text-gray-800 mb-4">فرم اطلاعات مشتری</h2>
+  <form action="#" method="post" class="space-y-6">
+
+    <!-- Grid for inputs -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- First Row (3 inputs) -->
+      <div>
+        <label class="block mb-1 text-gray-600">نام</label>
+        <input type="text" name="name" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-gray-600">شناسه / شماره ملی</label>
+        <input type="text" name="national_id" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-gray-600">کد پستی</label>
+        <input type="text" name="postal_code" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Second Row (2 inputs, 1 empty to keep layout aligned) -->
+      <div>
+        <label class="block mb-1 text-gray-600">شماره اقتصادی</label>
+        <input type="text" name="economic_id" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div>
+        <label class="block mb-1 text-gray-600">شماره تماس</label>
+        <input type="tel" name="phone" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div></div> <!-- empty for layout -->
+    </div>
+
+    <!-- Address (full row) -->
+    <div>
+      <label class="block mb-1 text-gray-600">آدرس</label>
+      <textarea name="address" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    </div>
+
+    <div class="text-left">
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">ثبت</button>
+    </div>
+  </form>
+</div>

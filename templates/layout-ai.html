@@ -1,123 +1,75 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>درخواست‌های فاکتور فروش</title>
-  <style>
-    body {
-      font-family: 'Tahoma', sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      direction: rtl;
-    }
-
-    /* Navbar */
-    .navbar {
-      background-color: #2c3e50;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-
-    .navbar .logo {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .navbar ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-
-    .navbar li {
-      display: inline;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    .navbar a:hover {
-      color: #1abc9c;
-    }
-
-    /* Main container */
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 30px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    thead {
-      background-color: #3498db;
-      color: white;
-    }
-
-    th, td {
-      padding: 15px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    tr:hover {
-      background-color: #f1f1f1;
-    }
-
-    .status-pending {
-      color: #f39c12;
-      font-weight: bold;
-    }
-
-    .status-completed {
-      color: #2ecc71;
-      font-weight: bold;
-    }
-
-    .status-cancelled {
-      color: #e74c3c;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>داشبورد مدیریت</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">سیستم مدیریت فروش</div>
-    <ul>
-      <li><a href="#">فروشنده</a></li>
-      <li><a href="#">خریدار</a></li>
-      <li><a href="#">انبار</a></li>
-      <li><a href="#">ورود</a></li>
-      <li><a href="#">خروج</a></li>
-      <li><a href="#">ثبت‌نام</a></li>
-    </ul>
-  </nav>
-{% block content %}
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-6 space-y-4">
+      <h2 class="text-xl font-bold text-blue-700 mb-6">مدیریت فروش</h2>
+      <nav class="space-y-2">
+        <a href="#" class="block text-gray-700 hover:text-blue-600">داشبورد</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600">درخواست‌ها</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600">فروشنده‌ها</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600">مشتری‌ها</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600">تنظیمات</a>
+      </nav>
+    </aside>
 
-{% endblock %}
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <!-- Top Bar -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-semibold text-gray-800">داشبورد درخواست‌های فاکتور</h1>
+        <div class="text-sm text-gray-600">
+          <div>کاربر: <span class="font-semibold text-gray-800">علی حسینی</span></div>
+          <div>آخرین ورود: ۱۴۰۳/۰۱/۲۰</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white shadow rounded-lg overflow-hidden">
+        <table class="min-w-full text-sm text-center">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="py-3 px-4">شماره</th>
+              <th class="py-3 px-4">مشتری</th>
+              <th class="py-3 px-4">تاریخ</th>
+              <th class="py-3 px-4">وضعیت</th>
+              <th class="py-3 px-4">مبلغ (تومان)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4">1001</td>
+              <td class="py-3 px-4">علی رضایی</td>
+              <td class="py-3 px-4">1403/01/01</td>
+              <td class="py-3 px-4 text-yellow-500 font-bold">در انتظار</td>
+              <td class="py-3 px-4">۵٬۲۰۰٬۰۰۰</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4">1002</td>
+              <td class="py-3 px-4">مریم مرادی</td>
+              <td class="py-3 px-4">1403/01/03</td>
+              <td class="py-3 px-4 text-green-600 font-bold">تکمیل‌شده</td>
+              <td class="py-3 px-4">۸٬۷۵۰٬۰۰۰</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-3 px-4">1003</td>
+              <td class="py-3 px-4">حسین جعفری</td>
+              <td class="py-3 px-4">1403/01/04</td>
+              <td class="py-3 px-4 text-red-500 font-bold">لغوشده</td>
+              <td class="py-3 px-4">۳٬۲۰۰٬۰۰۰</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
 </body>
 </html>
