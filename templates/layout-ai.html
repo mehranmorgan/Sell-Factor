@@ -12,17 +12,18 @@
     <aside class="w-64 bg-white shadow-md p-6 space-y-4">
       <h2 class="text-xl font-bold text-blue-700 mb-6">مدیریت فروش</h2>
       <nav class="space-y-2">
-        <a href="#" class="block text-gray-700 hover:text-blue-600">داشبورد</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600">درخواست‌ها</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600">فروشنده‌ها</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600">مشتری‌ها</a>
+        <a href="{% url 'main:index' %}" class="block text-gray-700 hover:text-blue-600">داشبورد</a>
+        <a href="{% url 'order:order_register' %}" class="block text-gray-700 hover:text-blue-600">درخواست‌ها</a>
+        <a href="{% url 'seller:seller-list' %}" class="block text-gray-700 hover:text-blue-600">فروشنده‌ها</a>
+        <a href="{% url 'customer:show_customer' %}" class="block text-gray-700 hover:text-blue-600">مشتری‌ها</a>
+        <a href="{% url 'product:show_product' %}" class="block text-gray-700 hover:text-blue-600">انبار</a>
         <a href="#" class="block text-gray-700 hover:text-blue-600">تنظیمات</a>
       </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="flex-1 p-8">
-      <!-- Top Bar -->
+        <!-- Top Bar -->
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold text-gray-800">داشبورد درخواست‌های فاکتور</h1>
         <div class="text-sm text-gray-600">
@@ -31,43 +32,8 @@
         </div>
       </div>
 
-      <!-- Table -->
-      <div class="bg-white shadow rounded-lg overflow-hidden">
-        <table class="min-w-full text-sm text-center">
-          <thead class="bg-blue-600 text-white">
-            <tr>
-              <th class="py-3 px-4">شماره</th>
-              <th class="py-3 px-4">مشتری</th>
-              <th class="py-3 px-4">تاریخ</th>
-              <th class="py-3 px-4">وضعیت</th>
-              <th class="py-3 px-4">مبلغ (تومان)</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr class="hover:bg-gray-50">
-              <td class="py-3 px-4">1001</td>
-              <td class="py-3 px-4">علی رضایی</td>
-              <td class="py-3 px-4">1403/01/01</td>
-              <td class="py-3 px-4 text-yellow-500 font-bold">در انتظار</td>
-              <td class="py-3 px-4">۵٬۲۰۰٬۰۰۰</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="py-3 px-4">1002</td>
-              <td class="py-3 px-4">مریم مرادی</td>
-              <td class="py-3 px-4">1403/01/03</td>
-              <td class="py-3 px-4 text-green-600 font-bold">تکمیل‌شده</td>
-              <td class="py-3 px-4">۸٬۷۵۰٬۰۰۰</td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="py-3 px-4">1003</td>
-              <td class="py-3 px-4">حسین جعفری</td>
-              <td class="py-3 px-4">1403/01/04</td>
-              <td class="py-3 px-4 text-red-500 font-bold">لغوشده</td>
-              <td class="py-3 px-4">۳٬۲۰۰٬۰۰۰</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        {% block content %}
+        {% endblock %}
     </main>
   </div>
 
