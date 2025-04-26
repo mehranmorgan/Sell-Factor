@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>داشبورد مدیریت</title>
   <script src="https://cdn.tailwindcss.com"></script>
+    {% block css %}{% endblock %}
 </head>
 <body class="bg-gray-100 font-sans">
 
@@ -27,8 +28,7 @@
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold text-gray-800">داشبورد درخواست‌های فاکتور</h1>
         <div class="text-sm text-gray-600">
-          <div>کاربر: <span class="font-semibold text-gray-800">علی حسینی</span></div>
-          <div>آخرین ورود: ۱۴۰۳/۰۱/۲۰</div>
+          <div>کاربر: <span class="font-semibold text-gray-800">{{ request.user }}</span></div>
         </div>
       </div>
 

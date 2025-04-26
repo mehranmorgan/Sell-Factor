@@ -3,46 +3,102 @@
 {% load humanize %}
 
 {% block title %}Show product{% endblock %}
-    {% block css %}
-        <link rel="stylesheet" href="{% static 'css_product/product.css' %}">
-    {% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css_product/product.css' %}">
+    <style>
+            .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+            .form-group input,
+        .form-group textarea {
+            margin: 20px auto;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+        .submit-btn {
+
+            background: #007bff;
+            color: white;
+            padding: 0.6rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+{% endblock %}
 {% block content %}
-    <div class="search_product">
-        <form class="form" method="get">
+    <div class="form-group">
+        <form class="form" method="get" style="margin: auto">
             <input type="text" name="search">
-            <button>Search</button>
+            <button class="submit-btn">Search</button>
 
         </form>
+          <button class="submit-btn">
+        <a href="{% url 'product:add_product' %}">Add New Product</a>
+    </button>
     </div>
 
-    <div class="table-container">
-    <table class="table">
-  <tr>
-    <th>Product</th>
-    <th>Price</th>
-    <th>Image</th>
-    <th>Remove</th>
+    <!-- Table -->
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+        <table class="min-w-full text-sm text-center">
+            <thead class="bg-blue-600 text-white">
+            <tr>
+                <th class="py-3 px-4">شماره</th>
+                <th class="py-3 px-4">نام محصول</th>
+                <th class="py-3 px-4">تعداد</th>
+                <th class="py-3 px-4">مبلغ (تومان)</th>
 
-  </tr>
-        {% for product in products %}
-  <tr>
-    <td>{{ product.name }}</td>
-    <td>{{ product.price | intcomma:False }}</td>
-      {% if product.image %}
-    <td><img style="width: 40px;height: 40px" src={{ product.image.url }}></td>
-        {% else %}
-  <td>-</td>
-  {% endif %}
-    <td><a href="{% url 'product:delete_product' product.id %}" ><svg style="width: 20px;height: 20px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-</svg>
-</a></td>
-  </tr>
-        {% endfor %}
-</table>
-</div>
+                <th class="py-3 px-4">حذف</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            {% for product in products %}
+                <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4">{{ product.id }}</td>
+                    <td class="py-3 px-4">{{ product.name }}</td>
+                    {% if product.qty %}
+                    <td class="py-3 px-4">{{ product.qty }}</td>
+                    {% else %}
+                    <td class="py-3 px-4">0</td>
+                    {% endif %}
+                    <td class="py-3 px-4">{{ product.price | intcomma:'Flase' }}</td>
+                    <td class="py-3 px-4 text-red-500 font-bold"><a
+                            href="{% url 'product:delete_product' product.id %}">
+                        <svg style="margin: auto;width: 20px;height: 20px" xmlns="http://www.w3.org/2000/svg"
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                        </svg>
+                    </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-        <div class="add_product">
-    <a href="{% url 'product:add_product' %}">Add New Product</a>
     </div>
+
+
+
 {% endblock %}

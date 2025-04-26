@@ -1,39 +1,87 @@
 {% extends 'layout-ai.html' %}
 {% load static %}
-
+{% load humanize %}
 
 {% block title %}Item register{% endblock %}
-    {% block css %}{% endblock %}
+    {% block css %}
+            <link rel="stylesheet" href="{% static 'css_product/product.css' %}">
+    <style>
+            .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+            .form-group input,
+        .form-group textarea {
+            margin: 20px auto;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+        .submit-btn {
+
+            background: #007bff;
+            color: white;
+            padding: 0.6rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+    {% endblock %}
 {% block content %}
         <div class="search_product">
-        <form class="form" method="get">
+        <form class="form-group" method="get">
             <input type="text" name="search">
-            <button>Search</button>
+            <button class="submit-btn">Search</button>
 
         </form>
     </div>
-        <div class="table-container">
-    <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Qty</th>
-
-  </tr>
-        {% for product in products %}
-  <tr>
-  <form method="post" action="{% url 'order:add_item' %}">
-      {% csrf_token %}
-      <input type="hidden" value="{{ order.id }}" name="order_id">
-    <td><input type="hidden" value="{{ product.id }}" name="id">{{ product.name }}</td>
-    <td><input type="number" min="1" style="width: 50px" name="qty"></td>
+           <div class="bg-white shadow rounded-lg overflow-hidden">
+        <table class="min-w-full text-sm text-center">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="py-3 px-4">نام</th>
+              <th class="py-3 px-4">تعداد</th>
+              <th class="py-3 px-4">ایجاد</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+          {% for product in products %}
+            <tr class="hover:bg-gray-50">
+              <form method="post" action="{% url 'order:add_item' %}">
+                    {% csrf_token %}
+                        <input type="hidden" value="{{ order.id }}" name="order_id">
+                      <td><input type="hidden" value="{{ product.id }}" name="id">{{ product.name }}</td>
+    <td><input type="number" min="1" style="font-size: 20px;text-align: center;height: 30px;width: 100px;border: 2px solid blue;border-radius: 10px " name="qty"></td>
     <td><button type="submit" style="width: 40px;height: 30px;background-image: none;color: black;border: none"><svg style="width: 20px;height: 20px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 </svg>
-</button></td>
+    </button></td>
+              </form>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
-</form>
-  </tr>
-        {% endfor %}
-</table>
-</div>
+
 {% endblock %}

@@ -2,16 +2,118 @@
 {% load static %}
 
 
-{% block title %}Product register{% endblock %}
-    {% block css %}
-         <link rel="stylesheet" href="{% static 'css_product/product.css' %}">
-    {% endblock %}
-{% block content %}
-    <div>
-    <form class="form" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button class="register" type="submit">Add</button>
-    </form>
-    </div>
+{% block title %}Customer register{% endblock %}
+{% block css %}
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f0f0f0;
+            padding: 2rem;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .form-container h2 {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 0.6rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
 {% endblock %}
+{% block content %}
+
+
+    <div class="form-container">
+        <h2>فرم اطلاعات محصولات</h2>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>نام</label>
+                    {{ form.name }}
+                    {#            <input type="text" name="name">#}
+                </div>
+                <div class="form-group">
+                    <label>قیمت</label>
+                    {{ form.price }}
+                    {#            <input type="text" name="name">#}
+                </div>
+                <div class="form-group">
+                    <label>تعداد</label>
+                    {{ form.qty }}
+                    {#            <input type="text" name="name">#}
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="submit-btn">ثبت</button>
+        </form>
+    </div>
+
+
+
+
+{% endblock %}
+{#        <div>#}
+{#    <form class="form" method="post" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        {{ form }}#}
+{#        <button class="register" type="submit">Add</button>#}
+{#    </form>#}
+{#    </div>#}
