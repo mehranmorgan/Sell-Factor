@@ -13,12 +13,17 @@
     <aside class="w-64 bg-white shadow-md p-6 space-y-4">
       <h2 class="text-xl font-bold text-blue-700 mb-6">مدیریت فروش</h2>
       <nav class="space-y-2">
+          {% if request.user.is_authenticated %}
         <a href="{% url 'main:index' %}" class="block text-gray-700 hover:text-blue-600">داشبورد</a>
         <a href="{% url 'order:order_register' %}" class="block text-gray-700 hover:text-blue-600">درخواست‌ها</a>
         <a href="{% url 'seller:seller-list' %}" class="block text-gray-700 hover:text-blue-600">فروشنده‌ها</a>
         <a href="{% url 'customer:show_customer' %}" class="block text-gray-700 hover:text-blue-600">مشتری‌ها</a>
         <a href="{% url 'product:show_product' %}" class="block text-gray-700 hover:text-blue-600">انبار</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600">تنظیمات</a>
+        <a href="{% url 'account:logout' %}" class="block text-gray-700 hover:text-blue-600">خروج</a>
+    {% else %}
+          <a href="{% url 'account:register' %}" class="block text-gray-700 hover:text-blue-600">ثبت نام</a>
+          <a href="{% url 'account:login' %}" class="block text-gray-700 hover:text-blue-600">ورود</a>
+          {% endif %}
       </nav>
     </aside>
 
@@ -28,10 +33,11 @@
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold text-gray-800">داشبورد درخواست‌های فاکتور</h1>
         <div class="text-sm text-gray-600">
+            {% if request.user.is_authenticated %}
           <div>کاربر: <span class="font-semibold text-gray-800">{{ request.user }}</span></div>
+            {% endif %}
         </div>
       </div>
-
         {% block content %}
         {% endblock %}
     </main>

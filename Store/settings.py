@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "product.apps.ProductConfig",
     "order.apps.OrderConfig",
     "main.apps.MainConfig",
-    'seller.apps.SellerConfig'
+    'seller.apps.SellerConfig',
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+AUTH_USER_MODEL = "account.MyUser"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

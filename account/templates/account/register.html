@@ -1,0 +1,12 @@
+{% extends 'layout-ai.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+    {{ error }}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">ثبت</button>
+</form>
+{% endblock %}
